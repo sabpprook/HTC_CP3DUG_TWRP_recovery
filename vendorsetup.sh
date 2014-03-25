@@ -1,0 +1,2 @@
+add_lunch_combo htc_cp3dug-userdebug
+add_lunch_combo htc_cp3dug-eng
