@@ -25,11 +25,13 @@ ARCH_ARM_HAVE_TLS_REGISTER := true
 
 
 # Kernel
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=cp3dug
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31
 BOARD_KERNEL_BASE := 0x03b00000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_FORCE_RAMDISK_ADDRESS := 0x04f08000
 TARGET_PREBUILT_KERNEL := device/htc/cp3dug/kernel
+TARGET_KERNEL_CONFIG := cp3dug_u_defconfig
+TARGET_KERNEL_SOURCE := kernel/cp3dugu
 
 # fix this up by examining /proc/mtd on a running device
 TARGET_USERIMAGES_USE_EXT4 := true
