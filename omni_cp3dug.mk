@@ -1,8 +1,8 @@
 ## Specify phone tech before including full_phone
-$(call inherit-product, vendor/cm/config/gsm.mk)
+$(call inherit-product, vendor/omni/config/gsm.mk)
 
 # Release name
-PRODUCT_RELEASE_NAME := cp3dugu
+PRODUCT_RELEASE_NAME := cp3dug
 
 # Inherit some common CM stuff.
 $(call inherit-product, vendor/omni/config/common.mk)

@@ -4,7 +4,7 @@ USE_CAMERA_STUB := true
 -include vendor/htc/cp3dug/BoardConfigVendor.mk
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := CP3_DUG
+TARGET_BOOTLOADER_BOARD_NAME := cp3dug
 TARGET_NO_BOOTLOADER := true
 
 # Platform
