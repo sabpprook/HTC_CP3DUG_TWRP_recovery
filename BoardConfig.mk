@@ -4,17 +4,12 @@ USE_CAMERA_STUB := true
 -include vendor/htc/cp3dug/BoardConfigVendor.mk
 
 # Bootloader
-TARGET_BOOTLOADER_BOARD_NAME :=
+TARGET_BOOTLOADER_BOARD_NAME := CP3_DUG
 TARGET_NO_BOOTLOADER := true
 
 # Platform
 TARGET_BOARD_PLATFORM := 8625Q
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno203
-
-# Flags
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-COMMON_GLOBAL_CFLAGS += -DREFRESH_RATE=60 -DQCOM_HARDWARE
 
 # Architecture
 TARGET_CPU_ABI := armeabi-v7a
@@ -30,8 +25,6 @@ BOARD_KERNEL_BASE := 0x03b00000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_FORCE_RAMDISK_ADDRESS := 0x04f08000
 TARGET_PREBUILT_KERNEL := device/htc/cp3dug/kernel
-TARGET_KERNEL_CONFIG := cp3dug_u_defconfig
-TARGET_KERNEL_SOURCE := kernel/cp3dugu
 
 # fix this up by examining /proc/mtd on a running device
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -44,17 +37,16 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Use power button as select in recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 
-# Recovery: set depending on recovery being built for. (CWM or TWRP)
-# both init scripts can be found in the recovery folder
-TARGET_RECOVERY_INITRC := device/htc/cp3dug/recovery/init-twrp.rc
+# Vold
+TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
+BOARD_HAS_LARGE_FILESYSTEM := true
 
-# Allow Power Button To Be Select In Recovery
-BOARD_HAS_NO_SELECT_BUTTON := true
+TARGET_RECOVERY_INITRC := device/htc/cp3dug/recovery/init-twrp.rc
 
 # TWRP Specific
 DEVICE_RESOLUTION := 540x960
 TW_FLASH_FROM_STORAGE := true
-TW_EXTERNAL_STORAGE_PATH := "/sdcard"
+TW_EXTERNAL_STORAGE_PATH := "/external_sd"
 TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard"
 TW_DEFAULT_EXTERNAL_STORAGE := true
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
@@ -63,5 +55,5 @@ TW_INCLUDE_DUMLOCK := true
 TW_INCLUDE_JB_CRYPTO := true
 TW_NO_SCREEN_BLANK := true
 TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
-TW_HTC_LED := true
+TW_MAX_BRIGHTNESS := 255
 
