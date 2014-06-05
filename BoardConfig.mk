@@ -12,21 +12,23 @@ TARGET_BOARD_PLATFORM := 8625Q
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno203
 
 # Architecture
+TARGET_ARCH := arm
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
-TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_SMP := true
+TARGET_ARCH_VARIANT := armv7-a-neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
+TARGET_CPU_VARIANT := krait
 
 
 # Kernel
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom user_debug=31
 BOARD_KERNEL_BASE := 0x03b00000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_FORCE_RAMDISK_ADDRESS := 0x04f08000
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01408000
 TARGET_PREBUILT_KERNEL := device/htc/cp3dug/kernel
 
-# fix this up by examining /proc/mtd on a running device
+# Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 0x00fffc00
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 0x00fffe00
@@ -41,7 +43,7 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun%d/file
 BOARD_HAS_LARGE_FILESYSTEM := true
 
-TARGET_RECOVERY_INITRC := device/htc/cp3dug/recovery/init-twrp.rc
+TARGET_RECOVERY_INITRC := device/htc/cp3dug/recovery/init.rc
 
 # TWRP Specific
 DEVICE_RESOLUTION := 540x960
