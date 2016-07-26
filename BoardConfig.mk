@@ -1,5 +1,3 @@
-BOARD_VENDOR := htc
-
 # Bootloader
 TARGET_NO_BOOTLOADER := true
 TARGET_BOOTLOADER_BOARD_NAME := msm8625
@@ -16,16 +14,11 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := generic
 TARGET_CPU_SMP := true
 
-# Flags
-TARGET_GLOBAL_CFLAGS += -mfpu=neon -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
-
 # Kernel
-BOARD_KERNEL_CMDLINE := no_console_suspend=1 console=null
+BOARD_KERNEL_CMDLINE :=
 BOARD_KERNEL_BASE := 0x03b00000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01408000 --tags_offset 0x00000100
-TARGET_USERIMAGES_USE_EXT4 := true
 
 # Recovery
 BOARD_HAS_NO_MISC_PARTITION := true
@@ -33,18 +26,14 @@ BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_USES_MMCUTILS := true
 TARGET_PREBUILT_KERNEL := device/htc/cp3dug/kernel
 TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
 
 # TWRP Build Flags
 TW_THEME := portrait_hdpi
+TW_EXCLUDE_DEFAULT_USB_INIT := true
 TW_INCLUDE_CRYPTO := true
-TW_NO_SCREEN_BLANK := true
-TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
+TARGET_RECOVERY_DEVICE_MODULES := chargeled
 
-RECOVERY_SDCARD_ON_DATA := true
-BOARD_HAS_NO_REAL_SDCARD := true
-TW_INTERNAL_STORAGE_PATH := "/data/media"
-TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TW_DEFAULT_EXTERNAL_STORAGE := true
+# Vendor Init
+TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
+TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_msm
